@@ -13,7 +13,7 @@ git remote add origin  https://github.com/userName/New_Repo
 
 or
 
-git remote set-url origin https://github.comuserName/New_Repo
+git remote set-url origin https://github.com/userName/New_Repo
 
 git push origin master
 

@@ -19,6 +19,6 @@ git push origin master
 
 git push --all
 
-npm install
-jspm install
+*npm install
+*jspm install
 

@@ -1,14 +1,12 @@
 
-# ProjectBase
+# ProjectBase ( Duh, need to change all this in the new repo)
 #The base project for all web based projects I need to make
 ##First "Clone" the repository to the other repository you are actually building
 1. Create a repository through gitbhub web interface for your new project
-2. git clone https://github.com/userName/ProjectBase New_Repo
+2. From root folder: git clone https://github.com/jw56578/ProjectBase New_Repo
 3. cd New_Repo
-4. git remote add origin  https://github.com/userName/New_Repo
-4. OR git remote set-url origin https://github.com/userName/New_Repo
+4. git remote set-url origin https://github.com/userName/New_Repo
 5. git push origin master
-6. git push --all
 
 ##Run the command line commands to set everything up
 

@@ -3,21 +3,38 @@ var browserSync = require('browser-sync').create();
 //this is the thing that just downlods all gulp plugins and makes them available as they are used
 var plugins = require('gulp-load-plugins')({lazy:true});
 //these cannot be lazy loaded for some reason
+//------
+//run command line commands directly
 var shell = require('gulp-shell');
+//minify and obfuscate
 var uglify = require('gulp-uglify');
-
-
+//------
+//by default you cannot run gulp tasks in sequence unless you setup dependencies,  so we need another library to do this
+var runSequence = require('run-sequence');
 // ./ is looking for local file as opposed to installed package
 //store all magic strings in another file so that it can be replaced easily
 var config = require('./gulp.config')();
 
-// Static server
-gulp.task('browser-sync', function () {
+//There is a way to have certain placeholders in the html page changed out with gulp so that this multi html page approach is not neccesary
+//but do that later
+gulp.task('browser-sync-dev', function () {
     'use strict';
     browserSync.init({
         server: {
             baseDir: "./"
-        }
+        },
+        startPath:"/indexNotBundled.html"
+        
+    });
+});
+gulp.task('browser-sync-prod', function () {
+    'use strict';
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        },
+        startPath:"/indexBundledAndMinified.html"
+        
     });
 });
 
@@ -49,6 +66,20 @@ gulp.task('uglify', function(){
     .pipe(gulp.dest('./dist'));
 
 }); 
+gulp.task('run-dev',function(){
+    runSequence(
+        'browser-sync-dev'
+      );
+
+});
+gulp.task('run-prod',function(){
+    runSequence(
+        'bundle',
+        'uglify',
+        'browser-sync-prod'
+      );
+
+});
 function log(msg){
     var u = plugins.util;
     if(typeof(msg) === 'object'){

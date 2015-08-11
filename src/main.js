@@ -1,3 +1,5 @@
-import {sayHello} from './greeter';
+var message = "hello";
 
-sayHello();
+export function sayHello(){
+    alert(message);
+}

@@ -1,5 +1,5 @@
 
-In order to make you package jspm exportable you need to put an entry in package.json for main
+In order to make your package jspm exportable you need to put an entry in package.json for main
 
 {
 ///other stuff
